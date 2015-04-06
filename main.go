@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"time"
 
@@ -16,7 +17,14 @@ func check(e error) {
 func main() {
 	//response, e := tripinfo.ReadFromFile("response.json")
 	//check(e)
-	travelDate, e := time.Parse("2006-01-02", "2015-06-19")
+
+	dateString := flag.String("date", "", "date of travel")
+	flag.Parse()
+	if *dateString == "" {
+		panic("You must provide a date string in the form of 2015-06-19")
+	}
+
+	travelDate, e := time.Parse("2006-01-02", *dateString)
 	check(e)
 	response, e := tripinfo.GetDataAndWriteToFile(travelDate)
 	check(e)
