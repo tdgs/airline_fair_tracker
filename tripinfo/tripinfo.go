@@ -32,7 +32,7 @@ func searchRequest(dateString string) *qpxexpress.TripsSearchRequest {
 	// Trave information
 	itenary := []*qpxexpress.SliceInput{&qpxexpress.SliceInput{Date: dateString, Destination: "ATH", Origin: "HAM", MaxStops: 2}}
 	passengerCounts := &qpxexpress.PassengerCounts{AdultCount: 1}
-	tripOptionsRequest := &qpxexpress.TripOptionsRequest{Passengers: passengerCounts, SaleCountry: "GR", Slice: itenary, MaxPrice: "EUR250"}
+	tripOptionsRequest := &qpxexpress.TripOptionsRequest{Passengers: passengerCounts, SaleCountry: "GR", Slice: itenary, MaxPrice: "EUR400"}
 	tripsSearchRequest := &qpxexpress.TripsSearchRequest{Request: tripOptionsRequest}
 
 	return tripsSearchRequest
