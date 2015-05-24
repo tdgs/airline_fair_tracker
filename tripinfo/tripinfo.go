@@ -52,8 +52,6 @@ func WriteToFile(response *qpxexpress.TripsSearchResponse, filename string) erro
 	if e != nil {
 		return e
 	}
-
-	// save the responce
 	return ioutil.WriteFile(filename, jsonResponse, 0644)
 }
 
@@ -76,7 +74,7 @@ func GetDataAndWriteToFile(date time.Time) (*qpxexpress.TripsSearchResponse, err
 		return nil, e
 	}
 
-	filename := fmt.Sprintf("response_%v_%v.json", dateString, time.Now().Unix())
+	filename := fmt.Sprintf("results/response_%v_%v.json", dateString, time.Now().Unix())
 	return response, WriteToFile(response, filename)
 }
 

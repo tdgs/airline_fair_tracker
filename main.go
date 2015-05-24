@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"log"
 	"time"
 
 	"github.com/tdgs/airline_fair_tracker/tripinfo"
@@ -10,7 +11,7 @@ import (
 
 func check(e error) {
 	if e != nil {
-		panic(e)
+		log.Fatal(e)
 	}
 }
 
@@ -21,7 +22,7 @@ func main() {
 	dateString := flag.String("date", "", "date of travel")
 	flag.Parse()
 	if *dateString == "" {
-		panic("You must provide a date string in the form of 2015-06-19")
+		log.Fatal("You must provide a date string in the form of 2015-06-19")
 	}
 
 	travelDate, e := time.Parse("2006-01-02", *dateString)
